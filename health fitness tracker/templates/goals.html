@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Goals | Health & Fitness Tracker{% endblock %}
+
+{% block content %}
+<section class="page">
+    <header class="page-header">
+        <div>
+            <h1>Your Goals</h1>
+            <p class="subtitle">Create and track small, consistent health and fitness goals.</p>
+        </div>
+    </header>
+
+    <div class="page-grid single">
+        <div class="card">
+            <h2>Add a new goal</h2>
+            <form method="post" class="form inline">
+                <input type="text" name="goal" placeholder="e.g. Walk 8,000 steps every day" required>
+                <button type="submit" class="btn-primary">Add goal</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Current goals</h2>
+            {% if user.goals %}
+                <ul class="goals-list detailed">
+                    {% for goal in user.goals %}
+                        <li class="{% if goal.completed %}goal-completed{% endif %}">
+                            <form method="post" action="{{ url_for('complete_goal', goal_index=loop.index0) }}">
+                                <span class="goal-text">{{ goal.text }}</span>
+                                {% if not goal.completed %}
+                                    <button type="submit" class="btn-secondary btn-small">Mark done</button>
+                                {% else %}
+                                    <span class="chip chip-success">Completed</span>
+                                {% endif %}
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You haven’t added any goals yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

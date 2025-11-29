@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}BMI Calculator | Health & Fitness Tracker{% endblock %}
+
+{% block content %}
+<section class="page">
+    <header class="page-header">
+        <div>
+            <h1>BMI Calculator</h1>
+            <p class="subtitle">Calculate your Body Mass Index and understand your weight category.</p>
+        </div>
+    </header>
+
+    <div class="page-grid">
+        <div class="card">
+            <h2>Enter your details</h2>
+            <form method="post" class="form">
+                <label>
+                    Weight (kg)
+                    <input type="number" name="weight" step="0.1" min="0" required>
+                </label>
+                <label>
+                    Height (cm)
+                    <input type="number" name="height" step="0.1" min="0" required>
+                </label>
+                <button type="submit" class="btn-primary full-width">Calculate BMI</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Result</h2>
+            {% if result %}
+                <p class="metric-main">{{ result.bmi }}</p>
+                <p class="metric-tag">{{ result.category }}</p>
+                <p class="metric-sub">
+                    Based on weight {{ result.weight }} kg and height {{ result.height }} cm.
+                </p>
+                <div class="bmi-scale">
+                    <div class="bmi-band underweight">Underweight &lt; 18.5</div>
+                    <div class="bmi-band normal">Normal 18.5 – 24.9</div>
+                    <div class="bmi-band overweight">Overweight 25 – 29.9</div>
+                    <div class="bmi-band obese">Obese ≥ 30</div>
+                </div>
+            {% else %}
+                <p>No BMI calculated yet. Enter your details to see your result.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

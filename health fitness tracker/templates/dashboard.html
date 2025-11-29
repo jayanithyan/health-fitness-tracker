@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Health & Fitness Tracker{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-header">
+        <div>
+            <h1>Hello, {{ user.name or session.user.name }}</h1>
+            <p class="subtitle">Here is a snapshot of your health today.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <h2>Latest BMI</h2>
+            {% if bmi_latest %}
+                <p class="metric-main">{{ bmi_latest.bmi }}</p>
+                <p class="metric-tag">{{ bmi_latest.category }}</p>
+                <p class="metric-sub">
+                    Weight: {{ bmi_latest.weight }} kg,
+                    Height: {{ bmi_latest.height }} cm
+                </p>
+            {% else %}
+                <p>No BMI record yet.</p>
+                <a href="{{ url_for('bmi') }}" class="btn-primary">Calculate BMI</a>
+            {% endif %}
+        </div>
+
+        <div class="card">
+            <h2>Profile</h2>
+            {% set p = user.profile %}
+            <ul class="profile-list">
+                <li><strong>Age:</strong> {{ p.age or 'Not set' }}</li>
+                <li><strong>Gender:</strong> {{ p.gender or 'Not set' }}</li>
+                <li><strong>Height:</strong> {{ p.height_cm or 'Not set' }}{% if p.height_cm %} cm{% endif %}</li>
+                <li><strong>Weight:</strong> {{ p.weight_kg or 'Not set' }}{% if p.weight_kg %} kg{% endif %}</li>
+                <li><strong>Activity:</strong> {{ p.activity_level or 'Not set' }}</li>
+            </ul>
+            <a href="{{ url_for('profile') }}" class="btn-secondary">Edit profile</a>
+        </div>
+
+        <div class="card">
+            <h2>Goals</h2>
+            {% if user.goals %}
+                <ul class="goals-list">
+                    {% for goal in user.goals[:3] %}
+                        <li class="{% if goal.completed %}goal-completed{% endif %}">
+                            {{ goal.text }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ url_for('goals') }}" class="btn-secondary">View all goals</a>
+            {% else %}
+                <p>No goals yet.</p>
+                <a href="{{ url_for('goals') }}" class="btn-primary">Add your first goal</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
