@@ -1,8 +1,5 @@
 # 🏋️‍♂️ Health & Fitness Tracker — Flask Web App
 
-![Cover](https://images.unsplash.com/photo-1554284126-aa88f22d8b72)
-![Dashboard Preview](https://images.unsplash.com/photo-1571019613914-85f342c55f85)
-![Fitness UI](https://images.unsplash.com/photo-1550345332-09e3ac987658)
 
 > 🚀 A modern **Health & Fitness Tracker Web Application** built using **Flask + HTML + CSS**, designed to help users track their **BMI, personal fitness profile, and health goals** with ease.
 
