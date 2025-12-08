@@ -18,25 +18,14 @@
 ✅ **Lightweight & Fast** Flask Backend
 ✅ Perfect for **Mini Projects, College Submissions & Portfolios**
 
-> ⚠️ *Data is stored in memory (demo purpose). Restarting the server resets everything.*
-
----
-
-## 📸 Screenshots (Replace with your own)
+Key Features
 
 🖥️ Dashboard
 📊 BMI Calculator
 👤 Profile Page
 🎯 Goals Manager
 
-```md
-![Dashboard](YOUR_IMAGE_LINK_HERE)
-![BMI](YOUR_IMAGE_LINK_HERE)
-![Profile](YOUR_IMAGE_LINK_HERE)
-![Goals](YOUR_IMAGE_LINK_HERE)
-```
 
----
 
 ## 🛠️ Tech Stack
 
@@ -192,11 +181,6 @@ If you like this project, don’t forget to ⭐ star the repository and share it
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
 
 ## 🙌 Author
 
